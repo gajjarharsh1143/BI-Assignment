@@ -1,0 +1,145 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/1/2024 8:05:07 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ADMIN"
+  DTS:CreatorName="Admin\DICT"
+  DTS:DTSID="{B33C9F5D-1C27-444A-862E-26249D55D7B8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{EBCA2FD4-7818-40AB-8D6D-ABBB83EB472E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C98C035F-AF32-4B6F-A315-32D396CBA5A2}"
+      DTS:ObjectName="input">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">B:\Harsh Gajjar\BI\SSIS Assignments\LEVEL-1\Archieve</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{CD6A01DF-652B-4FE2-87D0-BDEE248B1685}"
+      DTS:ObjectName="output">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">B:\Harsh Gajjar\BI\SSIS Assignments\LEVEL-1</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4609871D-C281-4AA0-A135-771A066D8A5E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="input">
+      <DTS:VariableValue
+        DTS:DataType="8">B:\Harsh Gajjar\BI\SSIS Assignments\LEVEL-1\Archieve</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{88C1A14F-B170-4C0E-A3AD-09FA62FD4A5F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::output]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="output">
+      <DTS:VariableValue
+        DTS:DataType="8">B:\Harsh Gajjar\BI\SSIS Assignments\LEVEL-1</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Foreach Loop Container"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{628E8F02-5F31-452C-8096-3C59F9D68E3A}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Foreach Loop Container">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{FAAF7B0C-6306-4FCC-8FA5-54B90EABC062}"
+        DTS:ObjectName="{FAAF7B0C-6306-4FCC-8FA5-54B90EABC062}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="B:\Harsh Gajjar\BI\SSIS Assignments\LEVEL-1\Archieve" />
+            <FEFEProperty
+              FileSpec="*.csv" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Foreach Loop Container\File System Task"
+          DTS:CreationName="Microsoft.FileSystemTask"
+          DTS:Description="File System Task"
+          DTS:DTSID="{BCAA5BA8-CEA4-4D17-B627-756759701EEB}"
+          DTS:ExecutableType="Microsoft.FileSystemTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File System Task"
+          DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <FileSystemData
+              TaskSourcePath="User::input"
+              TaskIsSourceVariable="True"
+              TaskDestinationPath="User::output"
+              TaskIsDestinationVariable="True" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{A18637CD-8885-4ECC-9BB8-1DB625F2B600}"
+          DTS:ObjectName="{A18637CD-8885-4ECC-9BB8-1DB625F2B600}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::input" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Foreach Loop Container\File System Task"
+          TopLeft="96,36" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="359,147"
+          Size="359,190"
+          Id="Package\Foreach Loop Container"
+          TopLeft="290,182" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
